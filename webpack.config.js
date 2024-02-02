@@ -8,13 +8,13 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    assetModuleFilename: '[name][ext]',
+    assetModuleFilename: 'images/[name][ext]',
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      inject: 'true',
+      inject: 'body',
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
   ],

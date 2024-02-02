@@ -1,37 +1,76 @@
 import * as THREE from 'three';
-import { plane } from './object.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { plane } from './objects.js';
+import { box } from './objects.js';
+import { gsap } from 'gsap/gsap-core';
+//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-//
-//
-//
-const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+const cvs = document.querySelector('#cvs_wrapper');
+const logoTarget = document.querySelector('.logo');
 
-renderer.setSize(900, 900);
+//console.log(logoTarget);
 
-document.body.appendChild(renderer.domElement);
+const render1 = new THREE.WebGLRenderer();
 
-const scene = new THREE.Scene();
+const render2 = new THREE.WebGLRenderer();
 
-const camera = new THREE.PerspectiveCamera(75, 800 / 800, 0.1, 1000);
+const heroImg = render1.domElement;
+const logo = render2.domElement;
 
-camera.position.set(0, 2, 5);
+heroImg.classList.add('heroImg');
 
-const orbit = new OrbitControls(camera, renderer.domElement);
+let cw = cvs.offsetWidth;
+let ch = cvs.offsetHeight;
+render1.setSize(cw, ch);
 
-// const axesHelper = new THREE.AxesHelper(5);
-// scene.add(axesHelper);
+window.addEventListener('resize', (e) => {
+  cw = cvs.offsetWidth;
+  ch = cvs.offsetHeight;
+  //console.log(cw, ch);
+  render1.setSize(cw, ch);
+  camera1.updateProjectionMatrix();
+});
 
-orbit.update();
+let logoW = logoTarget.offsetWidth;
+let logoH = logoTarget.offsetHeight;
 
-scene.add(plane);
+//console.log(logoW, logoH);
 
-// const gridHelper = new THREE.GridHelper(10, 100);
-// scene.add(gridHelper);
+render2.setSize(logoW, logoH);
+
+cvs.appendChild(heroImg);
+logoTarget.appendChild(logo);
+
+const scene1 = new THREE.Scene();
+const scene2 = new THREE.Scene();
+
+const camera1 = new THREE.OrthographicCamera();
+//console.log(camera1);
+const camera2 = new THREE.PerspectiveCamera();
+
+camera1.position.set(0, 0, 2);
+camera2.position.set(0, -0.5, 3);
+
+//const axisHelp = new THREE.AxesHelper(5);
+
+// const oC = new OrbitControls(camera1, render1.domElement);
+// oC.update();
+
+scene1.add(plane);
+scene2.add(box);
+//scene1.add(axisHelp);
+//console.log(plane.geometry.attributes.position.array);
 
 function render() {
-  renderer.render(scene, camera);
+  box.rotation.x += 0.01;
+  box.rotation.y += 0.01;
+  render1.render(scene1, camera1);
+  render1.setClearColor(0xffffff, 0);
+  render2.render(scene2, camera2);
+  render2.setClearColor(0xffffff, 0);
   requestAnimationFrame(render);
 }
 
 render();
+
+gsap.from(plane.scale, { x: 0, y: 0, z: 0, ease: 'expo.out', duration: 3 });
+//gsap.from(plane.position, { y: 3, z: 3, ease: 'expo.out', duration: 3 });

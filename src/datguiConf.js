@@ -1,9 +1,9 @@
 import * as dat from 'dat.gui';
-import { plane } from './object';
+import { plane } from './objects';
 
 // Debug
-const gui = new dat.GUI();
+// const gui = new dat.GUI();
 
-const options = {};
+// const options = {};
 
-export default options;
+// export default options;

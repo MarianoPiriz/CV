@@ -1,11 +1,15 @@
 varying vec2 vUv;
 
-varying vec3 vPosition;
+uniform float uCurve;
+
+float PI = 3.141529;
 
 void main() {
-    vPosition = position;
     vUv = uv;
+    vec3 pos = position;
 
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    pos.x = pos.x + sin(uv.y * PI) * (uCurve) * 0.1;
+
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 
 }
