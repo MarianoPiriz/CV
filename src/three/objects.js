@@ -1,17 +1,15 @@
 import * as THREE from 'three';
-import heroImg1 from './images/heroImg1.png';
-import heroImg2 from './images/heroImg2.png';
-import distImg from './images/dist.png';
-import logoImg from './images/logo.png';
-
-console.log(heroImg1, heroImg2, distImg, logoImg);
+import heroImg1 from '../images/heroImg1.png';
+import heroImg2 from '../images/heroImg2.png';
+import distImg from '../images/dist.png';
+import logoImg from '../images/logo.png';
 
 import { gsap } from 'gsap/gsap-core';
 
-import { smallDevices } from './pages.js';
+import { smallDevices } from '../navigation.js';
 
-import vertexShader from './glsl/vertex.glsl';
-import fragmentShader from './glsl/fragment.glsl';
+import vertexShader from '../glsl/vertex.glsl';
+import fragmentShader from '../glsl/fragment.glsl';
 
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -46,24 +44,11 @@ const imgTexture2 = imageToTexture(heroImg2);
 const imgTexture3 = imageToTexture(distImg);
 const logoTexture = imageToTexture(logoImg);
 
-console.log(imgTexture1);
-console.log(imgTexture2);
-
 /////////////////////////////////////////////////////////
-
-// const textureLoader = new THREE.TextureLoader();
-
-// const texture1 = textureLoader.load(heroImg1);
-// const texture2 = textureLoader.load(heroImg2);
-// const texture3 = textureLoader.load(distImg);
-
-// console.log(texture1.source.data);
 
 planeMaterial.uniforms.uTexture1 = {
   value: imgTexture1,
 };
-
-console.log(planeMaterial.uniforms.uTexture1);
 
 planeMaterial.uniforms.uTexture2 = {
   value: imgTexture2,
@@ -94,7 +79,6 @@ function eventTypeEnter(e) {
   }
 }
 function eventTypeLeave(e) {
-  //console.log(e.target);
   if (e.target.matches('.heroImg')) {
     gsap.fromTo(
       progress,
@@ -110,12 +94,9 @@ function eventTypeLeave(e) {
 }
 
 if (smallDevices.matches) {
-  console.log('small devices');
-
   window.addEventListener('pointerdown', eventTypeEnter);
   window.addEventListener('pointerup', eventTypeLeave);
 } else {
-  console.log('Desktop');
   window.addEventListener('mouseover', eventTypeEnter);
   window.addEventListener('mouseout', eventTypeLeave);
 }

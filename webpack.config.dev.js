@@ -13,12 +13,4 @@ module.exports = merge(common, {
     hot: true,
     port: 8080,
   },
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.css$/i,
-  //       use: ['style-loader', 'css-loader'],
-  //     },
-  //   ],
-  // },
 });

@@ -1,6 +1,7 @@
 import './style.css';
-import './renderer.js';
-import './objects.js';
-import './shuffle.js';
-import './nav.js';
-import './gsapAnimations.js';
+import './three/renderer.js';
+import './three/objects.js';
+import './animations/shuffle.js';
+import './animations/gsapAnimations.js';
+import './router/index.routes.js';
+import './navigation.js';
