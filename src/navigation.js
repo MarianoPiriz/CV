@@ -1,76 +1,51 @@
 import { gsap } from 'gsap/gsap-core';
-
-const navLnk = nvBar.querySelectorAll('a');
-
-const svg = document.querySelector('svg');
-
+import { navMenu } from './controller/navmenu';
+import { letsTalk } from './controller/letsTalk';
+const linkList = document.querySelectorAll('.linkList > li> a');
 const nvWrapper = document.querySelector('.nav_wrapper');
-
-export const smallDevices = window.matchMedia(
+const smallDevices = window.matchMedia(
   'all and (min-width: 375px) and (max-width:1200px)'
 );
-const iPadPro = window.matchMedia('all and (width:1366px) and (height:1024px)');
+console.log(linkList);
 
-const isLandscape = window.matchMedia('(orientation:landscape)');
-
-navLnk.forEach((link) => {
+linkList.forEach((link) => {
   link.addEventListener('click', (e) => {
-    //console.log(link.hash);
-    let aHash = link.hash;
-
+    console.log(e.target);
     if (smallDevices.matches) {
+      console.log('Small Devices');
       if (!nvWrapper.classList.contains('open')) {
         nvWrapper.classList.add('open');
+        nvWrapper.style.height = '100%';
 
-        gsap.to(svg, {
-          height: document.body.clientHeight + 'px',
-          backgroundColor: 'black',
-          ease: 'expoScale',
-          duration: 2,
-        });
+        const navTL = gsap.timeline({ defaults: { duration: 1 } });
+
+        navMenu();
+
+        let navHeight = document.body.clientHeight;
+        console.log(document.body, navHeight);
+
+        navTL
+          .to('.navBG', { height: navHeight, ease: 'expoScale' })
+          .to('.navLnk', {
+            display: 'block',
+            opacity: 1,
+            x: 0,
+            paddingTop: 0,
+            fontSize: '50px',
+            stagger: 0.2,
+            ease: 'expoScale',
+            duration: 0.5,
+          })
+          .to('.extraLinks', { opacity: 1, ease: 'expo.out' }, 0.3)
+          .to('.extraLinks', { y: 0, ease: 'expo.out', duration: 3 }, '< 0.3');
 
         window.addEventListener('resize', () => {
-          svg.style.height = document.body.clientHeight + 'px';
-          if (!nvWrapper.classList.contains('open')) {
-            svg.style.height = '0px';
-          }
-          if (iPadPro.matches && isLandscape.matches) {
-            svg.style.height = '0px';
-            gsap.to('.navLnk', {
-              display: 'block',
-              opacity: 1,
-              x: 0,
-              duration: 0.5,
-            });
-          } else if (
-            window.matchMedia('all and (width:1024px) and (height:1366px)')
-              .matches
-          ) {
-            gsap.to('.navLnk', {
-              opacity: 0,
-            });
-            gsap.to(svg, {
-              height: '0vh',
-              ease: 'expoScale',
-              duration: 2,
-            });
-            setTimeout(() => {
-              nvWrapper.classList.remove('open');
-            }, 2000);
-          }
-        });
-
-        gsap.to('.navLnk', {
-          display: 'block',
-          opacity: 1,
-          x: 0,
-          stagger: 0.2,
-          ease: 'expoScale',
-          duration: 0.5,
+          gsap.to('.navBG', {
+            height: document.body.clientHeight + 'px',
+          });
         });
       } else {
-        nvWrapper.classList.remove('open');
-
+        const navBG = document.querySelector('.navBG');
         gsap.to('.navLnk', {
           display: 'none',
           opacity: 0,
@@ -79,15 +54,25 @@ navLnk.forEach((link) => {
           ease: 'expoScale',
           duration: 0.5,
         });
+        gsap.to('.navBG', { height: '0vh', ease: 'expoScale', duration: 2.5 });
+        gsap.to('.nav_wrapper', { height: '25%', duration: 1 });
+        gsap.to('.extraLinks', { opacity: 0, duration: 1, ease: 'expo.out' });
 
-        gsap.to(svg, {
-          height: '0vh',
-          ease: 'expoScale',
-          duration: 2,
-        });
+        nvWrapper.classList.remove('open');
+        setTimeout(() => {
+          document.body.removeChild(navBG);
+        }, 2500);
       }
     } else {
-      console.log('NoteBook Desktop');
+      console.log('descktop');
     }
   });
+});
+
+window.addEventListener('click', (e) => {
+  console.log(e.target);
+  if (e.target.matches('.btn-letsTalk')) {
+    e.preventDefault();
+    letsTalk();
+  }
 });

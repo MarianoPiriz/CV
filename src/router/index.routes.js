@@ -1,17 +1,18 @@
-import { homePage } from '../views/home.js';
-import { aboutPage } from '../views/about.js';
-import { educationPage } from '../views/education.js';
-import { experiencePage } from '../views/experience.js';
-import { projectsPage } from '../views/projects.js';
-import { contactPage } from '../views/contact.js';
-import { notFoundPage } from '../views/404.js';
+import { homePage } from '../controller/home.js';
+import { aboutPage } from '../controller/about.js';
+import { educationPage } from '../controller/education.js';
+import { experiencePage } from '../controller/experience.js';
+import { projectsPage } from '../controller/projects.js';
+import { contactPage } from '../controller/contact.js';
+import { notFoundPage } from '../controller/404.js';
 
 window.addEventListener('hashchange', () => {
-  console.log(location.hash);
-  router(window.location.hash);
+  const location_Href = window.location.hash;
+
+  router(location_Href);
 });
 
-export const router = (route) => {
+const router = (route) => {
   switch (route) {
     default: {
       notFoundPage();
@@ -23,22 +24,27 @@ export const router = (route) => {
     }
     case '#about': {
       aboutPage();
+
       break;
     }
     case '#education': {
       educationPage();
+
       break;
     }
     case '#experience': {
       experiencePage();
+
       break;
     }
     case '#projects': {
       projectsPage();
+
       break;
     }
     case '#contact': {
       contactPage();
+
       break;
     }
   }

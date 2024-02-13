@@ -12,6 +12,8 @@
 html{
     font-size: 62.5%;
     height: -webkit-fill-available; 
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 5%;
 }
 
 :root{
@@ -23,6 +25,19 @@ html{
     --fs-sm:4rem;
     --fs-xs:2rem;
     --fs-xxs:1.4rem;
+}
+
+section {
+    scroll-snap-align: start;
+    width: 100%;
+    height: 100%;
+}
+button {
+    background-color: transparent;
+    border-radius: 2.5rem;   
+    border: 1px solid black;
+    font-size: var(--fs-xs);
+ 
 }
 
 
@@ -92,11 +107,12 @@ main {
 /* navigation+*/
 
 .nav_wrapper{  
-    position: absolute; 
+    position:absolute; 
     background-color:transparent; /* goes black*/
     top:0%;
     left: 0%;
-    width: 100%;  
+    width: 100%; 
+    height: 25%;
     padding: 3%;
     z-index: 1;
 }
@@ -116,38 +132,12 @@ main {
 .logo{
     width: 10rem;
     aspect-ratio: 1/1;
+    pointer-events: none;
 }
 
-/* .burgerMenu {
-    margin:0.5%;
-    position: relative;
-    float: right;
-    width:3rem;
-    height: 3rem;
-    filter: blur(0.06rem);
-    opacity:0.75;
-    
+.logoBtn{
+    margin-bottom: 40%;
 }
-.burgerMenu::after{
-    content:"";
-    position:absolute;
-    top:1.5rem;
-    left:0;
-    width: 100%;
-    height: 0.5rem;
-    background-color: rgb(255, 255, 255);
-    transform: rotate(-45deg); 
-}
-.burgerMenu::before{
-    content:"";
-    position:absolute;
-    bottom: 1rem;
-    left:0;
-    width: 100%;
-    height: 0.5rem;
-    background-color: rgb(255, 252, 252);
-    transform: rotate(45deg);
-} */
 
 
 .navLnk{
@@ -155,24 +145,99 @@ main {
     font-size: var(--fs-xs);
     color: white;
     padding-left: 8%;
-    padding-top: 10%;
+    padding-top: 10%; 
     opacity: 0;
-    transform: translateX(500px);
+    transform: translateX(500px);       
+}
+.navLnk::after{
+    content:"";
+    position: absolute;
+    bottom:0%;
+    left: 8%;
+    background-color: rgb(134, 134, 134);
+    width: 85%;
+    height: 2px;
+
+}
+
+.navBG {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0vh;
+    background-color: black;
+}
+.extraLinks{
+    position:absolute;
+    bottom: 5%;
+    left:10%;
+    width: 80%;
+    transform: translateY(-100px);
+    opacity: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    .menuCopy{
+        color:white;
+        font-size: var(--fs-sm) ;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 0.8;
+    }
+}
+.navMenuLinks {  
+    display: flex;
+    flex-direction: column;
+    
+    a {
+        font-size: var(--fs-xxs) ; 
+        color:white;
+    }
     
 }
 
-svg{
-    position: absolute;
+.ctaPage{
+    position:absolute;
     top:0;
     left:0;
-    width:100vw;
-    height:0vh;
-    fill: black;
-    stroke: black;
-    /* transition: height 1s ease-in; */
-    
+    width: 100%;
+    height: 0vh;
+    background-color:#979797 ;
+}
+.letsTalk > h2{
+    padding: 50% 10% 10% 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    line-height: 0.8;
+    font-size: var(--fs-md);
+    color: white;
+    text-wrap: balance;
+}
+.ctaMessage > a{
+    color: #000000;
+     
 }
 
+
+.btn-cta{
+    width: 80%;
+    height: 4.5rem;
+    margin-left:10%;
+    border: 1px solid rgb(0, 0, 0);
+    color:rgb(0, 0, 0); 
+    cursor: pointer;   
+}
+      
+
+.scrollWrapper {
+    
+    #about, #education, #experience, #projects, #contact{
+        margin-top: 3%;
+        height: 100vh;
+    }
+   
+    
+    }
 
 /*section_ home*/
 
@@ -200,14 +265,11 @@ svg{
     justify-content: space-between;
 }
 
-.cta_btn{
-    background-color: transparent;
-    border: 1px solid black;
+.cta_btn{    
     width: 99%;
     height: 4.5rem;
-    border-radius: 2.5rem;   
-    font-size: var(--fs-xs);
     margin-bottom: 15%;
+    cursor: pointer;
 }
 .copy{  
     font-size: var(--fs-sm); 
@@ -219,13 +281,15 @@ svg{
 /*canvas*/
 #cvs_wrapper{
     width: 100%;   
-    aspect-ratio: 1/1;    
+    aspect-ratio: 1/1 !important;
+    object-fit: cover; 
 }
 
 
 .icon_wrapper{
     width: 8.5rem;
     height: 4rem;
+    overflow: hidden;
     }
     
 .icon{
@@ -248,11 +312,39 @@ svg{
     background-repeat: no-repeat;
 }
 
+/*SECTION ABOUT */
+#about{
+    background-color: black;
+}
+/*SECTION  EDUCATION*/
+#education{
+    background-color: blue;
+}
+/*SECTION  EXPERIENCE*/
+#experience{
+    background-color: red;
+}
+/*SECTION  PROJECTS*/
+#projects{
+    background-color: green;
+}
+/*SECTION  CONTACT*/
+#contact{
+    background-color: yellow;
+}
+
+
+
+
 /***************************mediaquerys*************************************************/
 
 @media all and (min-width: 600px){
     .cta_btn{
         width: 33%;
+    }
+    .btn-cta{
+        width: 30%;
+        
     }
 
     .flexWrapper{
@@ -268,7 +360,7 @@ svg{
 
 }
 
-@media all and (min-width: 1280px){
+@media all and (min-width: 1190px){
     #home{
         display: flex;
         flex-direction: row;
@@ -283,6 +375,7 @@ svg{
         width:50%
     }
     .nav_wrapper{
+        position:fixed;
         top:3%;
         right: 5%;
         width: 94%;
@@ -296,6 +389,12 @@ svg{
         opacity:1;
         transform: translateX(0px);
     }
+    .navLnk::after{
+        
+        width: 0%;
+        
+    
+    }
 
     .linkList{
         display: flex;
@@ -303,6 +402,12 @@ svg{
         justify-content: space-between;
     
     }
+    .letsTalk > h2{
+        padding: 15% 10%;      
+        line-height: 0.8;
+        font-size: var(--fs-xxl);       
+    }
+    
 
     .hero_HL{
         padding-top: 30%;
@@ -311,6 +416,10 @@ svg{
     .cta_btn{
         width: 25%;
         margin-bottom: 0%;
+    }
+    .btn-cta{
+        width: 20%;
+        
     }
     .flexWrapper {
         padding-top: 9%;
@@ -343,6 +452,12 @@ svg{
     }
     .cta_btn{
         font-size: var(--fs-xxs);
+    }
+
+    .btn-cta{
+        width: 10%;
+        font-size: var(--fs-xxs);
+        
     }
    
 

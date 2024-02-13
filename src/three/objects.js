@@ -6,8 +6,6 @@ import logoImg from '../images/logo.png';
 
 import { gsap } from 'gsap/gsap-core';
 
-import { smallDevices } from '../navigation.js';
-
 import vertexShader from '../glsl/vertex.glsl';
 import fragmentShader from '../glsl/fragment.glsl';
 
@@ -93,7 +91,9 @@ function eventTypeLeave(e) {
   }
 }
 
-if (smallDevices.matches) {
+if (
+  window.matchMedia('all and (min-width: 375px) and (max-width:1200px)').matches
+) {
   window.addEventListener('pointerdown', eventTypeEnter);
   window.addEventListener('pointerup', eventTypeLeave);
 } else {
