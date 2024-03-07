@@ -1,3 +1,5 @@
+import noEncontrado from '../views/noEncontrado.html';
+
 export const notFoundPage = function () {
   console.log('No encontrado');
   const notFound = document.createElement('div');
@@ -10,4 +12,5 @@ export const notFoundPage = function () {
   notFound.style.left = '0';
   notFound.style.overflow = 'hidden';
   document.body.append(notFound);
+  notFound.innerHTML = noEncontrado;
 };

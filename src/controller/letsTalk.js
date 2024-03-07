@@ -6,7 +6,13 @@ export const letsTalk = () => {
   ctaHtml.classList.add('ctaPage');
   ctaHtml.innerHTML = letsTalkHtml;
   document.body.appendChild(ctaHtml);
-  console.log(ctaHtml);
+
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  console.log(document.body.clientHeight);
+
+  const dinamicPadding = document.body.clientHeight / 250;
+
   const ctaTL = gsap.timeline();
 
   ctaTL
@@ -15,6 +21,12 @@ export const letsTalk = () => {
       ease: 'expo.out',
       duration: 1.3,
     })
+    .fromTo(
+      '.ctaPage',
+      { top: '1000px', opacity: 0 },
+      { top: 0, opacity: 1, duration: 0.5, ease: 'expoScale' },
+      0.2
+    )
     .fromTo(
       '.btn-cta',
       {
@@ -29,6 +41,7 @@ export const letsTalk = () => {
       },
       0.15
     )
+    //.to('.letsTalk', { padding: '50% 10% 10% 10%' })
     .fromTo(
       '.ctaMessage',
       {
@@ -43,15 +56,19 @@ export const letsTalk = () => {
       },
       0.5
     );
-  window.addEventListener('resize', () => {
-    gsap.to('.ctaPage', {
-      height: document.body.clientHeight + 'px',
-    });
-  });
+  // window.addEventListener('resize', () => {
+  //   gsap.to('.ctaPage', {
+  //     height: document.body.clientHeight + 'px',
+  //   });
+  //   // gsap.to('.letsTalk', { padding: dinamicPadding + '% 10% 10% 10%' });
+  //   // if (w < h) {
+  //   //   gsap.to('.letsTalk', { padding: '50% 10% 10% 10%' });
+  //   // }
+  // });
 
   ctaHtml.addEventListener('click', (e) => {
     if (e.target.matches('.btn-cta')) {
-      console.log(e.target);
+      //console.log(e.target);
 
       gsap.to('.ctaMessage', {
         y: -400,

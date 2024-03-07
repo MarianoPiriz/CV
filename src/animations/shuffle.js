@@ -19,7 +19,7 @@ gsap.from('.hero_P', {
   ease: 'power2.out',
   delay: 2,
 });
-gsap.from('.cta_btn', {
+gsap.from('.cta_btn_wrapp', {
   opacity: 0,
   y: 200,
   duration: 1,

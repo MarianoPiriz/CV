@@ -6,9 +6,9 @@ import { projectsPage } from '../controller/projects.js';
 import { contactPage } from '../controller/contact.js';
 import { notFoundPage } from '../controller/404.js';
 
-window.addEventListener('hashchange', () => {
+window.addEventListener('hashchange', (e) => {
   const location_Href = window.location.hash;
-
+  console.log(location_Href);
   router(location_Href);
 });
 
