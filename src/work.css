@@ -1,0 +1,149 @@
+.work_section{
+    
+    h2, h3 , p{
+        color: black;
+    }
+    h3{
+        font-size: var(--fs-xs);
+    }
+
+}
+
+.groups{
+    padding-block: 3%;  
+}
+
+article{
+    padding-bottom: 3%;
+    p{
+        padding-top: 1%;
+    }
+}
+
+.footer{
+    width: 50%;
+    h2{
+        font-size: var(--fs-NoteBook);
+        color:var(--accent);
+    }
+    h3{
+        color:var(--accent);
+    }
+}
+
+@media all and (min-width: 600px){
+    .footer{
+        width: 40%;
+        h2{
+            font-size: var(--fs-Desktop);
+        }
+        
+    }
+
+    .groups{
+        align-items: flex-start;
+    }
+
+    .group{
+        width:40%;
+    }
+
+    .item-1{
+        order:1;
+    }
+
+    .item-2{
+        order:3;
+    }
+    .item-3{
+        order:2;
+    }
+    .item-4{
+        order:4;
+    }
+    .item-5{
+        order:5;
+        align-self: flex-end;
+        flex-grow: 1;
+    }
+}
+
+@media all and (min-width: 768px){
+    .footer{
+        width:30%;
+    }
+}
+
+
+@media all and ( max-height: 798px){
+
+    .work_section{
+
+        h3{font-size:var(--fs-xxs)}
+    }
+
+    .footer{
+        width: 50%;
+        h2{
+            font-size: 5rem;
+        }
+        h3{
+            font-size: 1rem;
+        }
+    }
+
+}
+
+@media all and (min-width:1024px){
+    .footer{
+        width:22%;
+    }
+}
+
+@media all and (min-width:1080px) {
+    .work_section{
+        height: 100vh;
+        h3{font-size:var(--fs-xxs)}
+    }
+
+    .footer{
+        width: 50%;
+        h2{
+            font-size: 5rem;
+        }
+        h3{
+            font-size: 1rem;
+        }
+    }
+}
+
+@media all and (min-width: 1280px){
+    .work_section{
+        padding-top:5%;
+    }
+    .groups{
+        padding-top: 5%;
+    }
+    .footer{
+        width:50%;
+        h2{
+            font-size: var(--fs-md);
+        }
+        h3{
+            font-size: var(--fs-xxs);
+        }
+    }
+
+}
+
+@media all and (min-width: 1800px){
+    .footer{
+        width:42%;
+        h2{
+            font-size: var(--fs-lg);
+        }
+        h3{
+            font-size: var(--fs-xxs);
+        }
+    }
+}

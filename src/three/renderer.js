@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { plane } from './objects.js';
 import { box } from './objects.js';
 import { gsap } from 'gsap/gsap-core';
+
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const cvs = document.querySelector('#cvs_wrapper');
@@ -33,8 +34,6 @@ window.addEventListener('resize', (e) => {
 let logoW = logoTarget.offsetWidth;
 let logoH = logoTarget.offsetHeight;
 
-//console.log(logoW, logoH);
-
 render2.setSize(logoW, logoH);
 
 cvs.appendChild(heroImg);
@@ -44,7 +43,7 @@ const scene1 = new THREE.Scene();
 const scene2 = new THREE.Scene();
 
 const camera1 = new THREE.OrthographicCamera();
-//console.log(camera1);
+
 const camera2 = new THREE.PerspectiveCamera();
 
 camera1.position.set(0, 0, 2);
@@ -57,6 +56,7 @@ camera2.position.set(0, -0.5, 3);
 
 scene1.add(plane);
 scene2.add(box);
+
 //scene1.add(axisHelp);
 //console.log(plane.geometry.attributes.position.array);
 
@@ -67,6 +67,7 @@ function render() {
   render1.setClearColor(0xffffff, 0);
   render2.render(scene2, camera2);
   render2.setClearColor(0xffffff, 0);
+
   requestAnimationFrame(render);
 }
 

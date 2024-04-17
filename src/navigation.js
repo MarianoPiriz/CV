@@ -1,5 +1,4 @@
 import { navMenu } from './controller/navmenu';
-import { letsTalk } from './controller/letsTalk';
 
 function addGlobalEventListener(type, selector, callback) {
   document.addEventListener(type, (e) => {
@@ -9,7 +8,6 @@ function addGlobalEventListener(type, selector, callback) {
 
 addGlobalEventListener('click', 'a', (e) => {
   const target = e.target.className;
-  console.log(e.target);
 
   switch (target) {
     case 'logoBtn': {
@@ -18,20 +16,28 @@ addGlobalEventListener('click', 'a', (e) => {
 
       break;
     }
-    case 'cta-btn': {
-      letsTalk();
+    case 'navLnk': {
+      navMenu();
     }
   }
 });
 
-// document.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   console.log(e.target);
-
-//   const target = e.target;
-
-//   const route = target.getAttribute('href');
-
-//   console.log(route);
-
+// window.addEventListener('scroll', (e) => {
+//   const sections = document.querySelectorAll('section');
+//   console.log(document.documentElement.clientHeight);
+//   console.log(window.scrollY);
+//   console.log(sections);
+//   sections.forEach((section) => {
+//     console.log(section.id, Math.ceil(section.getBoundingClientRect().top));
+//     const target = section.id;
+//     const targetPosition = Math.ceil(section.getBoundingClientRect().top);
+//     if (targetPosition <= 100) {
+//       //window.location.hash = '#' + target;
+//       history.replaceState(
+//         null,
+//         null,
+//         document.location.pathname + '#' + target
+//       );
+//     }
+//   });
 // });

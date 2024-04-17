@@ -1,8 +1,8 @@
 import * as THREE from 'three';
-import heroImg1 from '../images/heroImg1.png';
-import heroImg2 from '../images/heroImg2.png';
-import distImg from '../images/dist.png';
-import logoImg from '../images/logo.png';
+import heroImg1 from '../assets/heroImg1.png';
+import heroImg2 from '../assets/heroImg2.png';
+import distImg from '../assets/dist.png';
+import logoImg from '../assets/logo.png';
 
 import { gsap } from 'gsap/gsap-core';
 
@@ -108,3 +108,5 @@ const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 const boxMaterial = new THREE.MeshBasicMaterial({ map: logoTexture });
 
 export const box = new THREE.Mesh(boxGeometry, boxMaterial);
+
+////////////////////////////////////////////////////////////////////////////////

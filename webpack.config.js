@@ -46,6 +46,17 @@ module.exports = {
         exclude: /node_modules/,
         use: 'raw-loader',
       },
+      {
+        test: /\.(glb|gltf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'assets/models/',
+            },
+          },
+        ],
+      },
     ],
   },
 };

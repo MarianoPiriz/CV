@@ -80,7 +80,7 @@ setTimeout(() => {
           spans[3].innerText = 4;
         }, 1500);
         clearInterval(timer);
-      }, 1800);
+      }, 1500);
     }, 50);
   }
 }, 4000);

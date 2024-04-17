@@ -1,0 +1,45 @@
+.contact_section{
+ 
+    h2, h3, a , p{
+        color:var(--flat-grey)
+    }
+    a { 
+        font-size: var(--fs-sm);
+        text-decoration: underline;
+    }
+    a:hover{
+        color:var(--accent)
+    }
+}
+
+.callToAction{
+    font-size: var(--fs-xs);
+}
+
+.contact_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.contact_items{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    
+}
+
+
+
+
+
+.footer_copy{
+    display: flex;
+    justify-content: space-between;
+    p{
+       font-family: Arial, Helvetica, sans-serif;
+        font-size: var(--fs-xs);
+        color: var(--flat-grey);
+    }
+}

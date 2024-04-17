@@ -1,7 +1,15 @@
 import './style.css';
+import './nav.css';
+import './home.css';
+import './about.css';
+import './academics.css';
+import './work.css';
+import './freelance.css';
+import './contact.css';
 import './three/renderer.js';
 import './three/objects.js';
+import './scrolling.js';
 import './animations/shuffle.js';
 import './animations/gsapAnimations.js';
-import './router/index.routes.js';
 import './navigation.js';
+import './observer.js';
