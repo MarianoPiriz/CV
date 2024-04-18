@@ -45,6 +45,7 @@ html.lenis, html.lenis body {
     --fs-xxl:clamp(4rem, 20vw, 13rem);
     --fs-lg:8rem;
     --fs-md:6rem;
+    --fs-base: 5.5rem;
     --fs-sm:4rem;
     --fs-xs:2.2rem;
     --fs-xss:1.8rem;
@@ -64,11 +65,11 @@ html.lenis, html.lenis body {
 section {
     scroll-snap-align: start;
     width: 100%;
-    height: 100vh;
+    height: 100svh;
 }
 
 .secondary_heading{
-    font-size: var(--fs-md);
+    font-size: var(--fs-base);
 }
 
 .sub_heading{
@@ -116,13 +117,15 @@ ul li a { display: inline-block}
 
 
 
-H1, H2 , H3 , H4 , H5{
+h1, h2 , h3 , h4 , h5{
 font-family: 'Arial', sans-serif;
 display: inline-block;
 line-height: 1;
 filter: blur(0.06rem);
 color: white;
 }
+
+
 
 
 .bold{
@@ -222,13 +225,14 @@ font-size: var(--fs-xxs)
         a {
             color: white;
         }
+        h1, h2 {
+            color: white;
+            font-size: var(--fs-Desktop);
+            }
     }
 }
 
-.notFound > h1, h2 {
-color: white;
-font-size: var(--fs-Desktop);
-}
+
 
 
 
