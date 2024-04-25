@@ -1,12 +1,5 @@
-import { CompressedTextureLoader } from 'three';
-import { homePage } from './controller/home.js';
-import { aboutPage } from './controller/about.js';
-import { educationPage } from './controller/education.js';
-import { experiencePage } from './controller/experience.js';
-import { projectsPage } from './controller/projects.js';
-import { contactPage } from './controller/contact.js';
-
 const sections = document.querySelectorAll('section');
+const colorBg = document.body;
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -14,47 +7,43 @@ const observer = new IntersectionObserver(
 
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // console.log(entry.target.id);
-        // console.log(entry.isIntersecting);
-
         switch (entry.target.id) {
           case 'home': {
-            //homePage();
+            colorBg.style.backgroundColor = 'var(--black)';
             history.replaceState(null, null, '#home');
             break;
           }
           case 'about': {
-            aboutPage();
+            colorBg.style.backgroundColor = 'var(--dark-grey)';
             history.replaceState(null, null, '#about');
             break;
           }
           case 'education': {
-            educationPage();
+            colorBg.style.backgroundColor = 'var(--flat-grey)';
             history.replaceState(null, null, '#education');
             break;
           }
           case 'experience': {
-            experiencePage();
+            colorBg.style.backgroundColor = 'var(--mid-grey)';
             history.replaceState(null, null, '#experience');
             break;
           }
           case 'projects': {
-            projectsPage();
+            colorBg.style.backgroundColor = 'var(--light-grey)';
             history.replaceState(null, null, '#projects');
             break;
           }
           case 'contact': {
-            contactPage();
+            colorBg.style.backgroundColor = 'var(--extra-light-grey)';
             history.replaceState(null, null, '#contact');
             break;
           }
         }
-        //observer.unobserve(entry.target);
       }
     });
   },
   {
-    rootMargin: '-100px',
+    threshold: 0.3,
   }
 );
 

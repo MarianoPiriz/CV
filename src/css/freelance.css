@@ -1,0 +1,63 @@
+.freelance_section{
+    h2, h3 ,p{
+        color:var(--dark-grey)
+    }
+    h3{
+        text-decoration: underline;
+    }
+
+   a:hover{
+        color: var(--accent)
+    }
+    
+}
+.projects_content{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 90vh;
+}
+.projects_header{
+    width: 100%;
+}
+
+.demos{
+    width: 100%;
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+}
+
+@media all and (max-height: 450px){
+    #projects{
+        height: fit-content;
+    }
+
+
+    .projects_content{
+        flex-direction: row;
+    }
+}
+
+@media all and ( min-width: 600px){
+    .demos{
+        flex-direction: row;
+    }
+}
+
+@media all and (orientation:landscape) and ( min-width: 900px){
+    .projects_content{
+        flex-direction: row;
+    }
+    .projects_header{
+        width: 45%;
+    }
+
+    .demos{
+        padding-top:0%;
+        width: 45%;        
+    }
+}
+

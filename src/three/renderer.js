@@ -74,4 +74,5 @@ function render() {
 render();
 
 gsap.from(plane.scale, { x: 0, y: 0, z: 0, ease: 'expo.out', duration: 3 });
+
 //gsap.from(plane.position, { y: 3, z: 3, ease: 'expo.out', duration: 3 });

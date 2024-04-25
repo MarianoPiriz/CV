@@ -12,9 +12,15 @@ export const educationPage = function () {
   const text = new SplitType(heading, { types: 'chars' });
 
   gsap.from('.academic_section', {
-    y: 500,
+    y: 600,
     duration: 3,
     ease: 'expoScale',
+    scrollTrigger: {
+      trigger: '#education',
+      scrub: 1,
+      start: 'top 99%',
+      end: 'top 20%',
+    },
   });
   gsap.from(text.chars, {
     y: 50,
@@ -41,22 +47,4 @@ export const educationPage = function () {
       end: 'top 20%',
     },
   });
-
-  const target = root.querySelector('.skill_section');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        gsap.from('.level_bar', {
-          width: 0,
-          duration: 2,
-          ease: 'expoScale',
-          stagger: 0.1,
-          delay: 0.5,
-        });
-      }
-    });
-  });
-
-  observer.observe(target);
 };

@@ -1,8 +1,9 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import model3d from '../assets/computer.glb';
+import model3d from '../assets/untitled.glb';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+const target = document.querySelector('.gltf_wrapper');
 let cw = target.offsetWidth;
 let ch = target.offsetHeight;
 
@@ -10,6 +11,7 @@ const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(cw, ch);
 
 const canvas = renderer.domElement;
+canvas.classList.add('model');
 
 target.appendChild(canvas);
 
@@ -18,7 +20,7 @@ const camera = new THREE.PerspectiveCamera(75, cw / ch, 0.1, 1000);
 const light = new THREE.AmbientLight(0xffffee, 0.8);
 //light.position.set(2, 2, 5);
 scene.add(light);
-camera.position.set(-3, 0, 0);
+camera.position.set(0, 0, 2.5);
 
 const orbit = new OrbitControls(camera, canvas);
 
@@ -30,12 +32,15 @@ let model;
 
 loader.load(model3d, function (gltf) {
   model = scene.add(gltf.scene);
-  console.log(gltf);
+
+  model.position.y = -1;
   model.traverse((node) => {
     if (!node.isMesh) return;
 
     node.material.wireframe = true;
-    node.material.color.setHex(0xdef71c);
+    node.material.color.set(0xdef71c);
+    //node.material.color.set(0x000000);
+    //node.material.color.setHex(0xffffff);
   });
 });
 

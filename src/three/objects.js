@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import heroImg1 from '../assets/heroImg1.png';
-import heroImg2 from '../assets/heroImg2.png';
-import distImg from '../assets/dist.png';
+import heroImg1 from '../assets/heroImg1.jpg';
+import heroImg2 from '../assets/heroImg2.jpg';
+import distImg from '../assets/dist.jpg';
 import logoImg from '../assets/logo.png';
 
 import { gsap } from 'gsap/gsap-core';

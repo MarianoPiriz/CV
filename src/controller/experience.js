@@ -1,11 +1,9 @@
 import work from '../views/work.html';
 import gsap from 'gsap';
 import SplitType from 'split-type';
-import { element } from 'three/examples/jsm/nodes/Nodes.js';
 
-export const experiencePage = function () {
-  console.log('Estas en Experience');
-  const root = document.getElementById('experience');
+export const experiencePage = function (target) {
+  const root = document.getElementById(target);
   root.innerHTML = work;
   root.style.height = 'fit-content';
 
@@ -14,9 +12,15 @@ export const experiencePage = function () {
   const text = new SplitType(heading, { types: 'chars' });
 
   gsap.from('.work_section', {
-    y: 500,
+    y: 600,
     duration: 3,
     ease: 'expoScale',
+    scrollTrigger: {
+      trigger: '#experience',
+      scrub: 1,
+      start: 'top 99%',
+      end: 'top 20%',
+    },
   });
   gsap.from(text.chars, {
     y: 50,
@@ -25,7 +29,6 @@ export const experiencePage = function () {
     scrollTrigger: {
       trigger: '#experience',
       scrub: 1,
-
       start: 'top 90%',
       end: 'top 20%',
     },
@@ -45,13 +48,13 @@ export const experiencePage = function () {
     },
   });
 
-  const digits = root.querySelector('.num');
+  const digits = document.querySelector('.num');
 
   const value = digits.getAttribute('data-value');
 
-  const target = root.querySelector('.item-5');
+  const targetObs = document.querySelector('.item-5');
 
-  const observer = new IntersectionObserver((entries) => {
+  const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         gsap.from('.item-5', {
@@ -69,5 +72,5 @@ export const experiencePage = function () {
     });
   });
 
-  observer.observe(target);
+  counterObserver.observe(targetObs);
 };

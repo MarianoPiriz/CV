@@ -1,0 +1,125 @@
+/*section_ home*/
+
+
+.hero_wrapper{
+    padding-top: 3%;
+}
+
+
+.flexWrapper{
+    margin-top: 7%;
+}
+.childflexWrapper{
+    gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cta_btn_wrapp{
+    width: 99%;
+    height: 4.5rem;
+    margin-bottom: 15%;
+    cursor: pointer;
+}
+
+.copy{
+    font-size: 5rem;
+    line-height: 0.9;
+}
+
+
+/*canvas*/
+#cvs_wrapper{
+    width: 100%;
+    aspect-ratio: 1/1 !important;
+    object-fit: cover;
+}
+
+
+.icon_wrapper{
+    width: 8.5rem;
+    height: 4rem;
+    overflow: hidden;
+    }
+
+.icon{
+    width: 4rem ;
+    display: inline-block;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: transparent;
+}
+
+.in{
+
+    background-image: url(../assets/Capa\ -1.svg);
+    background-repeat: no-repeat;
+}
+.gh{
+
+    background-image: url(../assets/Capa\ 2.svg);
+    background-repeat: no-repeat;
+}
+
+@media all and (min-width: 500px){
+
+    .cta_btn_wrapp{
+        width: 33%;
+    }
+    
+
+    .flexWrapper{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+     }
+
+ 
+}
+
+@media all and (min-width: 600px){
+
+}
+
+@media all and (max-height:450px){
+
+
+#cvs_wrapper{
+    width: 60%;
+}
+.copy{
+    font-size: 3rem;
+}
+
+.cta_btn_wrapp{
+    margin-bottom: 0%;
+}
+
+}
+
+@media all and (min-width: 900px){
+
+    .home_section{
+        height:100vh;
+    }
+
+    .cta_btn_wrapp{
+        margin-bottom: 0;
+    }
+
+    
+}
+
+@media all and (min-width:1190px){
+
+    
+    .hero_wrapper{
+        width: 100%;
+    }
+}
+@media all and (min-width:1800px){
+    
+    
+}
