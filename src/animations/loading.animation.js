@@ -11,7 +11,7 @@ const textArr = textCta.split('');
 const nuString = textCta.split('').join('');
 
 const fragment = document.createDocumentFragment();
-export const spanArray = [];
+const spanArray = [];
 
 textArr.forEach((element, i) => {
   const h1split = document.createElement('span');
@@ -63,6 +63,32 @@ setTimeout(() => {
     }, 50);
   }
 }, 4000);
+setTimeout(() => {
+  for (const span of spans) {
+    const numArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    const timer = setInterval(() => {
+      for (let index = 0; index < numArr.length; index++) {
+        const element = numArr[index];
+        let randomNum = Math.ceil(Math.random() * element);
+        span.innerText = randomNum;
+      }
+      setTimeout(() => {
+        spans[0].innerText = 2;
+        setTimeout(() => {
+          spans[1].innerText = 0;
+        }, 1000);
+        setTimeout(() => {
+          spans[2].innerText = 2;
+        }, 1200);
+        setTimeout(() => {
+          spans[3].innerText = 4;
+        }, 1500);
+        clearInterval(timer);
+      }, 1500);
+    }, 50);
+  }
+}, 4000);
 
 document.addEventListener('DOMContentLoaded', () => {
   ScrollTrigger.batch(spanArray, {
@@ -72,45 +98,36 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.1,
       }),
   });
-  gsap.from('.hero_HL', {
-    y: 150,
-    duration: 1,
-    ease: 'power2.out',
-  });
-  gsap.from('.hero_P', {
-    y: 200,
-    opacity: 0,
-    duration: 1,
-    ease: 'power2.out',
-    delay: 2,
-  });
-  gsap.from('.cta_btn_wrapp', {
-    opacity: 0,
-    y: 200,
-    duration: 1,
-    ease: 'power2.out',
-    delay: 3,
-  });
-  gsap.from('.copy', {
-    opacity: 0,
-    bottom: -50,
-    duration: 1,
-    ease: 'power2.out',
-    delay: 4,
-  });
+  const loadingTL = gsap.timeline({ defaults: { duration: 1 } });
 
-  gsap.from('.in', {
-    y: 100,
-    opacity: 0,
-    duration: 0.5,
-    ease: 'bounce.inOut',
-    delay: 5,
-  });
-  gsap.from('.gh', {
-    y: 100,
-    opacity: 0,
-    duration: 0.5,
-    ease: 'bounce.inOut',
-    delay: 6,
-  });
+  loadingTL
+    .from('.hero_HL', {
+      y: 150,
+      ease: 'power2.out',
+    })
+    .from('.hero_P', {
+      y: 200,
+      opacity: 0,
+      ease: 'power2.out',
+    })
+    .from('.cta_btn_wrapp', {
+      opacity: 0,
+      y: 200,
+      ease: 'power2.out',
+    })
+    .from('.copy', {
+      opacity: 0,
+      bottom: -50,
+      ease: 'power2.out',
+    })
+    .from('.in', {
+      y: 100,
+      opacity: 0,
+      ease: 'bounce.inOut',
+    })
+    .from('.gh', {
+      y: 100,
+      opacity: 0,
+      ease: 'bounce.inOut',
+    });
 });

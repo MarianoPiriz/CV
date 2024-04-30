@@ -1,3 +1,4 @@
+import './three/certificates.js';
 import './css/style.css';
 import './css/nav.css';
 import './css/home.css';

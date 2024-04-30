@@ -1,18 +1,32 @@
 import * as THREE from 'three';
-import heroImg1 from '../assets/heroImg1.jpg';
-import heroImg2 from '../assets/heroImg2.jpg';
-import distImg from '../assets/dist.jpg';
-import logoImg from '../assets/logo.png';
+
+import { homeImages } from '../three/assetLoader.js';
 
 import { gsap } from 'gsap/gsap-core';
 
 import vertexShader from '../glsl/vertex.glsl';
+
 import fragmentShader from '../glsl/fragment.glsl';
+
+//////////////////////////////////////////////////////////////
+
+const imgTexture1 = homeImages.textures[0];
+const imgTexture2 = homeImages.textures[1];
+const imgTexture3 = homeImages.textures[2];
+const logoTexture = homeImages.textures[3];
+
+// const coursera = certificates.textures[0];
+// const js = certificates.textures[1];
+// const fundasoft = certificates.textures[2];
+// const linux = certificates.textures[3];
+// const webmaster = certificates.textures[4];
+// const volta = certificates.textures[5];
+
+/////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////
 
 const planeGeometry = new THREE.PlaneGeometry(2, 2, 50, 50);
-
 const planeMaterial = new THREE.ShaderMaterial({
   vertexShader: vertexShader,
   fragmentShader: fragmentShader,
@@ -24,25 +38,6 @@ let progress = (planeMaterial.uniforms.iProgress = { value: 0.0 });
 let curve = (planeMaterial.uniforms.uCurve = {
   value: 0.0,
 });
-
-//////////////////////////////////////////////////////////////
-
-function imageToTexture(imgUrl) {
-  const img = new Image();
-  img.src = imgUrl;
-  const texture = new THREE.Texture(img);
-  img.onload = () => {
-    texture.needsUpdate = true;
-  };
-  return texture;
-}
-
-const imgTexture1 = imageToTexture(heroImg1);
-const imgTexture2 = imageToTexture(heroImg2);
-const imgTexture3 = imageToTexture(distImg);
-const logoTexture = imageToTexture(logoImg);
-
-/////////////////////////////////////////////////////////
 
 planeMaterial.uniforms.uTexture1 = {
   value: imgTexture1,
@@ -97,16 +92,15 @@ if (
   window.addEventListener('pointerdown', eventTypeEnter);
   window.addEventListener('pointerup', eventTypeLeave);
 } else {
-  window.addEventListener('mouseover', eventTypeEnter);
-  window.addEventListener('mouseout', eventTypeLeave);
+  window.addEventListener('mouseenter', eventTypeEnter);
+  window.addEventListener('mouseleave', eventTypeLeave);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-//const logoTexture = new THREE.TextureLoader().load(logoImg);
-const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-const boxMaterial = new THREE.MeshBasicMaterial({ map: logoTexture });
+const logoGeometry = new THREE.BoxGeometry(1, 1, 1);
+const logoMaterial = new THREE.MeshBasicMaterial({ map: logoTexture });
 
-export const box = new THREE.Mesh(boxGeometry, boxMaterial);
+export const box = new THREE.Mesh(logoGeometry, logoMaterial);
 
 ////////////////////////////////////////////////////////////////////////////////

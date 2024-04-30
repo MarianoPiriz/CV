@@ -92,16 +92,6 @@ gsap.from(
   staggerTypeAnimation('#about', 'top 80%')
 );
 
-// gsap.from('.about_p', {
-//   opacity: 0,
-//   scrollTrigger: {
-//     trigger: '#about',
-//     scrub: 1,
-//     start: 'top 40%',
-//     end: 'top 10%',
-//   },
-// });
-
 gsap.to('.model', {
   y: -400,
   scrollTrigger: {
