@@ -92,8 +92,8 @@ if (
   window.addEventListener('pointerdown', eventTypeEnter);
   window.addEventListener('pointerup', eventTypeLeave);
 } else {
-  window.addEventListener('mouseenter', eventTypeEnter);
-  window.addEventListener('mouseleave', eventTypeLeave);
+  window.addEventListener('mouseover', eventTypeEnter);
+  window.addEventListener('mouseout', eventTypeLeave);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
