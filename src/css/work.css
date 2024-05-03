@@ -2,6 +2,11 @@
     height: fit-content;
 }
 
+em:hover{
+ color:#DEF71C;
+ text-decoration: underline;
+}
+
 .work_section{
     
     h2, h3 , p{

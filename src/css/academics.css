@@ -28,9 +28,12 @@ position:absolute;
     top:30%;
     left:0;
     width:100%;
-    height: 40vh;
-    z-index: 1;   
+    aspect-ratio: 3/2 !important;
+    z-index: 1;  
+    
 }
+
+
 
 
 

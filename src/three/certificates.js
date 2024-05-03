@@ -21,15 +21,6 @@ const textures = {
   volta: certificates.textures[5],
 };
 
-console.log(textures);
-
-const coursera = certificates.textures[0];
-const js = certificates.textures[1];
-const fundasoft = certificates.textures[2];
-const linux = certificates.textures[3];
-const webmaster = certificates.textures[4];
-const volta = certificates.textures[5];
-
 class WebGL {
   constructor() {
     this.container = document.querySelector('.certificates-wrap');
@@ -41,7 +32,7 @@ class WebGL {
     this.offset = new THREE.Vector2(0, 0);
     this.uniforms = {
       uTexture: {
-        value: new THREE.TextureLoader().load(coursera),
+        value: new THREE.TextureLoader().load(certificates.textures[0]),
       },
       uAlpha: { value: 0.0 },
       uOffset: { value: new THREE.Vector2(0.0, 0.0) },
@@ -55,12 +46,11 @@ class WebGL {
         .matches
         ? (() => {
             //////////////////////////////////////////////////////////////
-
             link.lastElementChild.addEventListener('pointerdown', (e) => {
               link.lastElementChild.setPointerCapture(e.pointerId);
 
               const el = document.createElement('div');
-              const geo = new THREE.PlaneGeometry(2, 2, 50, 50);
+              const geo = new THREE.PlaneGeometry(1.6, 1.6);
 
               const mat = new THREE.MeshBasicMaterial();
 
@@ -72,6 +62,8 @@ class WebGL {
               });
 
               const canvas = renderer.domElement;
+
+              canvas.classList.add('canvas-el');
               const scene = new THREE.Scene();
               scene.add(mesh);
               const camera = new THREE.OrthographicCamera();
@@ -88,12 +80,29 @@ class WebGL {
 
               el.appendChild(canvas);
 
-              renderer.setSize(el.clientWidth, el.clientHeight);
-              setTimeout(() => {
-                //el.removeChild(canvas);
-                el.remove();
-              }, 3000);
+              const tl = gsap.timeline();
 
+              tl.from(mesh.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
+                ease: 'expo.out',
+                duration: 1,
+              }).to(mesh.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
+                ease: 'expo.out',
+                duration: 1,
+                delay: 1.5,
+              });
+
+              renderer.setSize(el.clientWidth, el.clientHeight);
+              camera.aspect = el.clientWidth / el.clientHeight;
+              camera.updateProjectionMatrix();
+              setTimeout(() => {
+                el.remove();
+              }, 4000);
               function render() {
                 renderer.render(scene, camera);
                 requestAnimationFrame(render);
@@ -111,7 +120,6 @@ class WebGL {
         this.linkHovered = false;
       });
     });
-
     this.setUpCamera();
     this.onMouseMove();
     this.createMesh();
@@ -158,8 +166,6 @@ class WebGL {
       vertexShader: vertex2,
       fragmentShader: fragment2,
       transparent: true,
-      // wireframe: true,
-      // side: THREE.DoubleSide
     });
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.sizes.set(500, 350, 1);

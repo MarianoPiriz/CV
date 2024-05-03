@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-import { homeImages } from '../three/assetLoader.js';
+import { homeImages, showcaseImages } from '../three/assetLoader.js';
 
 import { gsap } from 'gsap/gsap-core';
 
@@ -8,23 +8,14 @@ import vertexShader from '../glsl/vertex.glsl';
 
 import fragmentShader from '../glsl/fragment.glsl';
 
+import { videoLoader, videoUrl } from '../three/assetLoader.js';
+
 //////////////////////////////////////////////////////////////
 
 const imgTexture1 = homeImages.textures[0];
 const imgTexture2 = homeImages.textures[1];
 const imgTexture3 = homeImages.textures[2];
 const logoTexture = homeImages.textures[3];
-
-// const coursera = certificates.textures[0];
-// const js = certificates.textures[1];
-// const fundasoft = certificates.textures[2];
-// const linux = certificates.textures[3];
-// const webmaster = certificates.textures[4];
-// const volta = certificates.textures[5];
-
-/////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////////
 
 const planeGeometry = new THREE.PlaneGeometry(2, 2, 50, 50);
 const planeMaterial = new THREE.ShaderMaterial({
@@ -51,6 +42,7 @@ planeMaterial.uniforms.uTexture3 = {
 };
 
 export const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+gsap.from(plane.scale, { x: 0, y: 0, z: 0, ease: 'expo.out', duration: 3 });
 
 function eventTypeEnter(e) {
   //console.log(e.target);
@@ -103,4 +95,25 @@ const logoMaterial = new THREE.MeshBasicMaterial({ map: logoTexture });
 
 export const box = new THREE.Mesh(logoGeometry, logoMaterial);
 
+gsap.from(box.scale, { x: 0, y: 0, z: 0, ease: 'expo.out', duration: 3 });
+
 ////////////////////////////////////////////////////////////////////////////////
+
+const showcasingTarget = document.querySelector('.freelance_section');
+
+const showcasingObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      videoLoader(videoUrl).then((video) => {
+        gsap.from('.showcase-container', {
+          scale: 0,
+          duration: 1.5,
+          ease: 'expoScale',
+        });
+        showcasingObserver.unobserve(entry.target);
+      });
+    }
+  });
+});
+
+showcasingObserver.observe(showcasingTarget);

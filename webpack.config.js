@@ -50,7 +50,7 @@ module.exports = {
         use: 'raw-loader',
       },
       {
-        test: /\.(glb|gltf)$/,
+        test: /\.(mp4|glb|gltf)$/,
         use: [
           {
             loader: 'file-loader',

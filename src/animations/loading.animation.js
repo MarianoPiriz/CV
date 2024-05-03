@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const spans = document.querySelectorAll('.nums');
+
 const ctaH1 = document.querySelector('.hero_HL');
 
 const textCta = ctaH1.innerText;
@@ -37,32 +38,6 @@ textArr.forEach((element, i) => {
 
 ctaH1.appendChild(fragment);
 
-setTimeout(() => {
-  for (const span of spans) {
-    const numArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-    const timer = setInterval(() => {
-      for (let index = 0; index < numArr.length; index++) {
-        const element = numArr[index];
-        let randomNum = Math.ceil(Math.random() * element);
-        span.innerText = randomNum;
-      }
-      setTimeout(() => {
-        spans[0].innerText = 2;
-        setTimeout(() => {
-          spans[1].innerText = 0;
-        }, 1000);
-        setTimeout(() => {
-          spans[2].innerText = 2;
-        }, 1200);
-        setTimeout(() => {
-          spans[3].innerText = 4;
-        }, 1500);
-        clearInterval(timer);
-      }, 1500);
-    }, 50);
-  }
-}, 4000);
 setTimeout(() => {
   for (const span of spans) {
     const numArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];

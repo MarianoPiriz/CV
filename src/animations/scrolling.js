@@ -175,7 +175,8 @@ gsap.from(
   typeSplitter('[aria-label="Freelance Projects"]').chars,
   staggerTypeAnimation('#projects')
 );
-gsap.from('.demo', staggerAnimation('#projects', '500', 'top 80%'));
+gsap.from('.demo', showUp('#projects', 'top 80%'));
+gsap.from('.demo-item', staggerAnimation('#projects', '300', 'top 20%'));
 
 gsap.from('.contact_section', showUp('#contact', 'top 80%'));
 gsap.from(
