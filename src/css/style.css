@@ -92,7 +92,7 @@ body::before{
     opacity: 0.03;
     z-index: 1;
     pointer-events: none;
-    /* background: url(../assets/noise.gif) ;   */
+    background: url(../assets/noise.gif) ;  
     flex-grow: 1;
   }
 
@@ -266,11 +266,6 @@ p,a{
     
 }
 
-
-@media all and (min-width:1025px){
-
-    
-}
 
     
 

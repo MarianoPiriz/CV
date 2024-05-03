@@ -65,44 +65,44 @@ setTimeout(() => {
   }
 }, 4000);
 
-document.addEventListener('DOMContentLoaded', () => {
-  ScrollTrigger.batch(spanArray, {
-    onEnter: (batch) =>
-      gsap.from(batch, {
-        opacity: 0,
-        stagger: 0.1,
-      }),
-  });
-  const loadingTL = gsap.timeline({ defaults: { duration: 1 } });
-
-  loadingTL
-    .from('.hero_HL', {
-      y: 150,
-      ease: 'power2.out',
-    })
-    .from('.hero_P', {
-      y: 200,
+ScrollTrigger.batch(spanArray, {
+  onEnter: (batch) =>
+    gsap.from(batch, {
       opacity: 0,
-      ease: 'power2.out',
-    })
-    .from('.cta_btn_wrapp', {
-      opacity: 0,
-      y: 200,
-      ease: 'power2.out',
-    })
-    .from('.copy', {
-      opacity: 0,
-      bottom: -50,
-      ease: 'power2.out',
-    })
-    .from('.in', {
-      y: 100,
-      opacity: 0,
-      ease: 'bounce.inOut',
-    })
-    .from('.gh', {
-      y: 100,
-      opacity: 0,
-      ease: 'bounce.inOut',
-    });
+      stagger: 0.1,
+    }),
 });
+const loadingTL = gsap.timeline({ defaults: { duration: 1 } });
+
+loadingTL
+  .from('.hero_HL', {
+    y: 150,
+    ease: 'power2.out',
+  })
+  .from('.hero_P', {
+    y: 200,
+    opacity: 0,
+    ease: 'power2.out',
+  })
+  .from('.cta_btn_wrapp', {
+    opacity: 0,
+    y: 200,
+    ease: 'power2.out',
+  })
+  .from('.copy', {
+    opacity: 0,
+    bottom: -50,
+    ease: 'power2.out',
+  })
+  .from('.in', {
+    y: 100,
+    opacity: 0,
+    ease: 'bounce.inOut',
+  })
+  .from('.gh', {
+    y: 100,
+    opacity: 0,
+    ease: 'bounce.inOut',
+  });
+
+document.addEventListener('DOMContentLoaded', () => {});

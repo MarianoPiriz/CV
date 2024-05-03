@@ -4,8 +4,7 @@
     position:absolute;
     display: flex;
     justify-content: space-between;
-    background-color:transparent; /* goes black*/
-    top:0%;
+    background-color:transparent; 
     left: 0%;
     width: 100%;
 
@@ -45,12 +44,12 @@
 
 
 .navLnk{
-    /* display: none; */
+
     font-size: clamp(3rem, 11vw + 1rem, 10rem);
     color: #adabab;    
     line-height: 0.95 ;
     font-weight: 700;
-    /* opacity: 0;        */
+
 }
 
 .its_open{
@@ -68,12 +67,7 @@ display:flex;
 
 
 .navFooter{
-    /* position:fixed;
-    bottom: 5%;
-    left:3%;
-    width: 94%;
-    transform: translateY(-500px);
-    opacity: 0; */
+
     width:100%;
     display: flex;
     justify-content: space-between;

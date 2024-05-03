@@ -79,9 +79,7 @@
  
 }
 
-@media all and (min-width: 600px){
 
-}
 
 @media all and (max-height:450px){
 
@@ -119,7 +117,4 @@
         width: 100%;
     }
 }
-@media all and (min-width:1800px){
-    
-    
-}
+

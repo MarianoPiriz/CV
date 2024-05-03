@@ -12,9 +12,7 @@ em:hover{
     h2, h3 , p{
         color: black;
     }
-    /* h3{
-        font-size: var(--fs-xs);
-    } */
+   
 
 }
 
@@ -82,12 +80,6 @@ article{
 
 
 
-@media all and (max-height: 450px){
-
-}
-
-
-
 @media all and (min-width:1024px){
 .group{
     width: 30%;
@@ -118,6 +110,3 @@ article{
     }
 }
 
-@media all and (min-width: 100px){
-
-}
