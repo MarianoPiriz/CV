@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-import { box, plane, showcaseFrame } from './objects.js';
+import { box, plane } from './objects.js';
 
 class Renderer {
   constructor(target, mesh, camera, name) {
