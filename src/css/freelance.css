@@ -6,19 +6,9 @@
         text-decoration: underline;
         font-size: 1.5rem;
     }
-
-    a{
-        display: inline;
-    }
-
    a:hover{
         color: var(--accent)
     }
-
-    ul , li {
-        list-style: none;
-    }
-    
 }
 .showcase-container{
     width:100%;

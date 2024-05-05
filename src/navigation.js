@@ -1,51 +1,41 @@
 import { gsap } from 'gsap/gsap-core';
 
-const navBar = document.querySelector('.navBar');
-const navTL = gsap.timeline();
+const nav = document.querySelectorAll('[data-menu="closed"]');
+const TL = gsap.timeline();
 
-document.addEventListener('click', (e) => {
-  const target = e.target.className;
-
-  switch (target) {
-    case 'logoBtn': {
+nav.forEach((navItem) => {
+  navItem.addEventListener('click', (e) => {
+    if (e.target.matches('.logoBtn')) {
       e.preventDefault();
-      navMenu();
-
-      break;
     }
-    case 'navLnk': {
-      navMenu();
-    }
-  }
-});
-
-const navMenu = () => {
-  if (!navBar.classList.contains('its_open')) {
-    navBar.classList.add('its_open');
-    navTL
-      .fromTo(
-        navBar,
-        { height: 0 },
-        {
-          height: '100vh',
-          ease: 'expoScale',
-          duration: 0.5,
-        }
-      )
-      .from('.navLnk', {
-        y: -300,
-        opacity: 0,
-        stagger: 0.1,
+    if (e.target.matches('[data-menu="closed"]')) {
+      nav.forEach((navItem) => {
+        navItem.dataset.menu = 'open';
       });
-  } else {
-    navTL.to(navBar, {
-      height: '0vh',
-      duration: 1,
-      ease: 'expoScale',
-    });
-
-    setTimeout(() => {
-      navBar.classList.remove('its_open');
-    }, 600);
-  }
-};
+      TL.to('.navBar', {
+        top: '0%',
+        duration: 1,
+        ease: 'exposcale',
+      }).fromTo(
+        '.navLnk',
+        {
+          y: -200,
+        },
+        { y: 0, ease: 'expoScale', stagger: 0.1 }
+      );
+    } else {
+      TL.to('.navLnk', {
+        y: -200,
+        ease: 'expoScale',
+        stagger: 0.1,
+      }).to('.navBar', {
+        top: '-100%',
+        ease: 'exposcale',
+        duration: 0.5,
+      });
+      nav.forEach((navItem) => {
+        navItem.dataset.menu = 'closed';
+      });
+    }
+  });
+});

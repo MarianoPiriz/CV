@@ -61,8 +61,6 @@ const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        console.log(entry.isIntersecting);
-
         loadModel(model3d).then((model) => {
           gsap.from('.model', {
             opacity: 0,

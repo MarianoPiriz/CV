@@ -4,32 +4,36 @@
     position:absolute;
     display: flex;
     justify-content: space-between;
-    background-color:transparent; 
+    background-color:transparent;
     left: 0%;
     width: 100%;
-
     padding: 3%;
     z-index: 1;
 }
 
 .navBar{
- width: 100%;
- display: none;
- position:fixed;
- top:0;
- left:0;
- height: 0vh;
- background-color: black;
- padding:3%;
- 
+    width: 100%;
+    display:flex;
+    flex-wrap:wrap;
+    align-items: flex-end; 
+    position:fixed;
+    top:-100%;
+    left:0;
+    height: 100vh;
+    background-color: black;
+    padding:3%;
+    
 }
+
+
+
 
 
 .logo{
     width: 10rem;
     aspect-ratio: 1/1;
     pointer-events: none;
-    
+
 }
 
 .logoBtn{
@@ -44,20 +48,12 @@
 
 
 .navLnk{
-
     font-size: clamp(3rem, 11vw + 1rem, 10rem);
-    color: #adabab;    
+    color: #adabab;
     line-height: 0.95 ;
     font-weight: 700;
-
-}
-
-.its_open{
-
-display:flex;
- flex-wrap:wrap;
- align-items: flex-end;
- gap:10%;
+    display: block;
+    
 }
 
 
@@ -95,11 +91,6 @@ display:flex;
 
 }
 
-@media all and ( min-width: 500px){
-    .navLnk {       
-        transform: translateX(50px);
-    }
-}
 
 @media all and (max-height: 450px){
     .its_open{
