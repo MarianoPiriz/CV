@@ -29,9 +29,9 @@ nav.forEach((navItem) => {
         ease: 'expoScale',
         stagger: 0.1,
       }).to('.navBar', {
-        top: '-100%',
+        top: '-150%',
         ease: 'exposcale',
-        duration: 0.5,
+        duration: 1,
       });
       nav.forEach((navItem) => {
         navItem.dataset.menu = 'closed';
