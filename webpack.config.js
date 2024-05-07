@@ -18,11 +18,13 @@ module.exports = {
       inject: 'body',
       template: path.resolve(__dirname, 'src/index.html'),
     }),
-    new CopyPlugin([
-      { from: 'src/robots.txt', to: 'robots.txt' },
-      { from: 'src/sitemap.txt', to: 'sitemap.txt' },
-      { from: 'src/sitemap.xml', to: 'sitemap.xml' },
-    ]),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/robots.txt', to: 'robots.txt' },
+        { from: 'src/sitemap.txt', to: 'sitemap.txt' },
+        { from: 'src/sitemap.xml', to: 'sitemap.xml' },
+      ],
+    }),
   ],
   module: {
     rules: [
